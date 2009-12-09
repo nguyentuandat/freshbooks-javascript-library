@@ -24,8 +24,8 @@ FreshBooks_Invoice.prototype.internalXMLContent = function()
 {
 	var content =
 						this.getTagXML("invoice_id",this.invoiceId) +
-						this.getTagXML("amountOutstanding",this.amountOutstanding) +
-						this.getTagXML("recurringId",this.recurringId) +
+						this.getTagXML("amount_outstanding",this.amountOutstanding) +
+						this.getTagXML("recurring_id",this.recurringId) +
 						
 						FreshBooks_BaseInvoice.prototype.internalXMLContent.call(this);
 						

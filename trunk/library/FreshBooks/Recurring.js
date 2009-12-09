@@ -27,8 +27,8 @@ function FreshBooks_Recurring()
 FreshBooks_Recurring.prototype.internalXMLContent = function()
 {
 	var content =
-						this.getTagXML("recurringId",this.recurringId) +
-						this.getTagXML("amountOutstanding",this.amountOutstanding) +
+						this.getTagXML("recurring_id",this.recurringId) +
+						this.getTagXML("amount_outstanding",this.amountOutstanding) +
 						this.getTagXML("occurrences",this.occurrences) +
 						this.getTagXML("frequency",this.frequency) +
 						this.getTagXML("stopped",this.stopped) +
