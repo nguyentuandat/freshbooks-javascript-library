@@ -51,7 +51,7 @@ FreshBooks_BaseInvoice.prototype.internalXMLContent = function(){
 						this.getTagXML("amount",this.amount) +
 						this.getTagXML("status",this.status) +
 						this.getTagXML("date",this.date) +
-						this.getTagXML("poNumber",this.poNumber) +
+						this.getTagXML("po_number",this.poNumber) +
 						this.getTagXML("discount",this.discount) +
 						this.getTagXML("notes",this.notes) +
 						this.getTagXML("terms",this.terms) +

@@ -37,7 +37,7 @@ function FreshBooks_Staff()
 FreshBooks_Staff.prototype.asXML = function()
 {
 	var content =
-						this.getTagXML("staffId",this.staffId) +
+						this.getTagXML("staff_id",this.staffId) +
 						this.getTagXML("username",this.username) +
 						this.getTagXML("first_name",this.firstName) +
 						this.getTagXML("last_name",this.lastName) +
