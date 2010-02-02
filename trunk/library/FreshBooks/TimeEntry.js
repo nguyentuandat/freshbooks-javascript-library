@@ -18,6 +18,7 @@ function FreshBooks_TimeEntry()
 	this.date = "";
 	this.notes = "";
 	this.hours = "";
+	this.staffId = "";
 }
 	
 /**
@@ -48,6 +49,7 @@ FreshBooks_TimeEntry.prototype.internalLoadXML = function(XMLObject)
 	this.date = this.getXMLElementValue(XMLObject,"date");
 	this.notes = this.getXMLElementValue(XMLObject,"notes");
 	this.hours = this.getXMLElementValue(XMLObject,"hours");
+	this.staffId = this.getXMLElementValue(XMLObject,"staff_id");
 }
 
 /**
@@ -121,6 +123,7 @@ FreshBooks_TimeEntry.prototype.internalDelete = function(responseStatus,XMLObjec
 		this.date = null;
 		this.notes = null;
 		this.hours = null;
+		this.staffId = null;
 	}
 }
 
