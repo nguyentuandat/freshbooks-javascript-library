@@ -18,6 +18,8 @@ function FreshBooks_Project()
 	this.clientId = "";
 	this.rate = "";
 	this.description = "";
+	this.staff = new Array();
+	this.tasks = new Array();
 }
 	
 /**
@@ -31,10 +33,28 @@ FreshBooks_Project.prototype.asXML = function()
 						this.getTagXML("bill_method",this.billMethod) +
 						this.getTagXML("client_id",this.clientId) +
 						this.getTagXML("rate",this.rate) +
-						this.getTagXML("description",this.description);
+						this.getTagXML("description",this.description) +
+						this.tasksAsXML();
 						
 	return this.getTagXML("project",content);
 	
+}
+
+/**
+ * generate XML output from tasks array
+ */
+FreshBooks_Project.prototype.tasksAsXML = function(){
+
+	var content = '';
+	if(this.tasks.length > 0){
+		for(var i = 0; i < this.tasks.length; i++){
+			content += this.getTagXML("task_id",this.tasks[i]);
+		}
+		return this.getTagXML("tasks",content);
+	}
+	else{
+		return '';
+	}
 }
 
 /**
@@ -48,6 +68,28 @@ FreshBooks_Project.prototype.internalLoadXML = function(XMLObject)
 	this.clientId = this.getXMLElementValue(XMLObject,"client_id");
 	this.rate = this.getXMLElementValue(XMLObject,"rate");
 	this.description = this.getXMLElementValue(XMLObject,"description");
+	this.loadStaff(XMLObject);
+}
+
+/**
+ * load staff array from XML object
+ */
+FreshBooks_Project.prototype.loadStaff = function(XMLObject){
+	var staff = this.getXMLNode(XMLObject,"staff");
+	if(staff){
+		var children=staff.childNodes;
+		for (var i = 0; i < children.length; i++){
+			var child = children[i];
+			if(child.nodeName == "staff_id" && child.firstChild){
+				var j = this.staff.length;
+				this.staff.length = j + 1;
+				this.staff[j] = child.firstChild.nodeValue;
+			}
+		}
+	}
+	else{
+		this.staff = new Array();
+	}
 }
 
 /**
