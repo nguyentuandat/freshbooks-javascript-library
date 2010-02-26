@@ -38,6 +38,9 @@ function FreshBooks_Client()
 	this.sState = "";
 	this.sCountry = "";
 	this.sCode = "";
+
+	this.linkClientView = "";
+	this.linkView = "";
 }
 	
 /**
@@ -103,7 +106,13 @@ FreshBooks_Client.prototype.internalLoadXML = function(XMLObject)
 	this.sCity = this.getXMLElementValue(XMLObject,"s_city");
 	this.sState = this.getXMLElementValue(XMLObject,"s_state");
 	this.sCountry = this.getXMLElementValue(XMLObject,"s_country");
-	this.sCode = this.getXMLElementValue(XMLObject,"s_code");	
+	this.sCode = this.getXMLElementValue(XMLObject,"s_code");
+
+	var links = this.getXMLNode(XMLObject, "links");
+	if(links != null){
+		this.linkClientView = this.getXMLElementValue(links, "client_view");
+		this.linkView = this.getXMLElementValue(links, "view");
+	}
 }
 
 /**
